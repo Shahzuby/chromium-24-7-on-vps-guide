@@ -111,7 +111,7 @@ Then press: `CTRL + X`, `Y`, and `ENTER`
 ```bash
 cd $HOME && cd chromium
 
-docker compose up -d
+sudo docker compose up -d
 ```
 
 Then visit in your browser:
