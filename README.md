@@ -24,8 +24,8 @@ If you're using **Google Cloud**, follow these steps:
 ## 🔧 2. System Update
 
 ```bash
-sudo apt update && sudo apt upgrade -y
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove -y $pkg; done
+sudo apt update -y && sudo apt upgrade -y
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
 ---
@@ -33,9 +33,6 @@ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do
 ## 🐳 3. Install Docker (Official Method)
 
 ```bash
-sudo apt update -y && sudo apt upgrade -y
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
-
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
