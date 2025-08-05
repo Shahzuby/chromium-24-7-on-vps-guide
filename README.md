@@ -91,8 +91,8 @@ services:
       - PASSWORD=    #Replace password
       - PUID=1000
       - PGID=1000
-      - TZ=YOURVPSTIMEZONE
-      - CHROME_CLI=https://github.com/0xmoei #optional
+      - TZ=Etc/UTC
+      - CHROME_CLI=https://google.com
     volumes:
       - /root/chromium/config:/config
     ports:
