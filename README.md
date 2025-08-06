@@ -54,7 +54,16 @@ realpath --relative-to /usr/share/zoneinfo /etc/localtime
 
 ---
 
-## 📁 4. Set Up Chromium Folder
+## 🛠️ 4. Fix Docker Permissions (Optional Error Fix)
+
+```bash
+sudo usermod -aG docker $USER
+```
+Then **restart your VPS**.
+
+---
+
+## 📁 5. Set Up Chromium Folder
 
 ```bash
 mkdir chromium
@@ -63,7 +72,7 @@ cd chromium
 
 ---
 
-## 📝 5. Create docker-compose.yaml
+## 📝 6. Create docker-compose.yaml
 
 ```bash
 nano docker-compose.yaml
@@ -97,7 +106,7 @@ Then press: `CTRL + X`, `Y`, and `ENTER`
 
 ---
 
-## 🚀 6. Start Chromium
+## 🚀 7. Start Chromium
 
 ```bash
 sudo docker compose up -d
@@ -105,18 +114,7 @@ sudo docker compose up -d
 
 Then visit in your browser:
 
-- http://your-vps-ip:3010/
 - https://your-vps-ip:3011/
-
----
-
-## 🛠️ 7. Fix Docker Permissions (Optional Error Fix)
-
-```bash
-sudo usermod -aG docker $USER
-```
-
-Then **restart your VPS**.
 
 ---
 
