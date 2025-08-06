@@ -20,17 +20,9 @@ If you're using **Google Cloud**, follow these steps:
    - **Protocols & Ports:** TCP → `3010,3011`
 5. Click: **Create**
 
-
-## 🔧 2. System Update
-
-```bash
-sudo apt update -y && sudo apt upgrade -y
-for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
-```
-
 ---
 
-## 🐳 3. Install Docker (Official Method)
+## 🐳 2. Install Docker (Official Method)
 
 ```bash
 sudo apt-get update
@@ -54,7 +46,7 @@ docker --version
 
 ---
 
-## 🌍 4. Check Your Timezone
+## 🌍 3. Check Your Timezone
 
 ```bash
 realpath --relative-to /usr/share/zoneinfo /etc/localtime
@@ -62,7 +54,7 @@ realpath --relative-to /usr/share/zoneinfo /etc/localtime
 
 ---
 
-## 📁 5. Set Up Chromium Folder
+## 📁 4. Set Up Chromium Folder
 
 ```bash
 mkdir chromium
@@ -71,7 +63,7 @@ cd chromium
 
 ---
 
-## 📝 6. Create docker-compose.yaml
+## 📝 5. Create docker-compose.yaml
 
 ```bash
 nano docker-compose.yaml
@@ -85,20 +77,19 @@ services:
     image: lscr.io/linuxserver/chromium:latest
     container_name: chromium
     security_opt:
-      - seccomp:unconfined #optional
+      - seccomp:unconfined
     environment:
-      - CUSTOM_USER=     #Replace username
-      - PASSWORD=    #Replace password
+      - CUSTOM_USER=youruser
+      - PASSWORD=yourpass
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
-      - CHROME_CLI=https://google.com
+      - TZ=Asia/Kolkata
+      - CHROME_CLI=about:blank
     volumes:
       - /root/chromium/config:/config
     ports:
-      - 3010:3000   #Change 3010 to your favorite port if needed
-      - 3011:3001   #Change 3011 to your favorite port if needed
-    shm_size: "1gb"
+      - "3011:3001"  # HTTPS only
+    shm_size: "2gb"
     restart: unless-stopped
 ```
 
@@ -106,11 +97,9 @@ Then press: `CTRL + X`, `Y`, and `ENTER`
 
 ---
 
-## 🚀 7. Start Chromium
+## 🚀 6. Start Chromium
 
 ```bash
-cd $HOME && cd chromium
-
 sudo docker compose up -d
 ```
 
@@ -121,7 +110,7 @@ Then visit in your browser:
 
 ---
 
-## 🛠️ 8. Fix Docker Permissions (Optional Error Fix)
+## 🛠️ 7. Fix Docker Permissions (Optional Error Fix)
 
 ```bash
 sudo usermod -aG docker $USER
